@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Mini WhatsApp</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">
+        
+    </head>
+    <body>
+        <h1>WhatsApp Chats</h1>
+
+        <form method="GET" action="/chats/new">
+            <button>New Chat</button>
+        </form>
+
+    <div class="chat-container">
+
+        <% chats.forEach(chat => { %>
+
+            <div class="chat">
+
+                <div class="from">
+                    From: <%= chat.from %>
+                </div>
+
+                <div class="to">
+                    To: <%= chat.to %>
+                </div>
+
+                <div class="message">
+                    <%= chat.msg %>
+                </div>
+
+                <div class="date">
+                    <%= chat.created_at %>
+                </div>
+
+                <Form method="GET" action="/chats/<%= chat.id %>/edit">
+                    <button>edit</button>
+                </Form>
+
+                <Form method="POST" action="/chats/<%= chat._id %>?_method=DELETE">
+                    <Button type="submit">delete</Button>
+                </Form>
+
+            </div>
+
+        <% }) %>
+
+    </div>
+
+    
+
+        
+        <!-- <script src="" async defer></script> -->
+    </body>
+</html>
+
